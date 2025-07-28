@@ -1,0 +1,470 @@
+/* Hero Section Styles */
+.hero-main {
+  padding-top: 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-container {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.hero-background {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #dcfce7 0%, #eff6ff 50%, #f3e8ff 100%);
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+.circle-1 {
+  top: 10%;
+  right: 10%;
+  width: 12rem;
+  height: 12rem;
+  background: linear-gradient(135deg, #4ade80, #22c55e);
+  animation: float 6s ease-in-out infinite;
+}
+
+.circle-2 {
+  bottom: 20%;
+  right: 20%;
+  width: 8rem;
+  height: 8rem;
+  background: linear-gradient(135deg, #a78bfa, #8b5cf6);
+  animation: float 8s ease-in-out infinite reverse;
+}
+
+.circle-3 {
+  top: 30%;
+  right: 5%;
+  width: 6rem;
+  height: 6rem;
+  background: linear-gradient(135deg, #60a5fa, #3b82f6);
+  animation: float 7s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.hero-content {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  z-index: 10;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.text-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Style pour le nom seulement */
+.hero-greeting {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.hero-name {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #a67ec8ff, #987cb4ff, #c39dc7ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+
+@media (min-width: 640px) {
+  .hero-name {
+    font-size: 3.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-name {
+    font-size: 4.5rem;
+  }
+}
+
+.hero-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+
+@media (min-width: 640px) {
+  .hero-title {
+    font-size: 1.875rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-title {
+    font-size: 2.25rem;
+  }
+}
+
+.hero-subtitle {
+  font-size: 1.125rem;
+  color: #6b7280;
+  line-height: 1.7;
+  max-width: 32rem;
+}
+
+@media (min-width: 1024px) {
+  .hero-subtitle {
+    font-size: 1.25rem;
+  }
+}
+
+/* Nouveaux styles pour la description étendue */
+.hero-description {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.hero-description-text {
+  font-size: 1rem;
+  color: #4b5563;
+  line-height: 1.6;
+  max-width: 36rem;
+  margin: 0;
+}
+
+@media (min-width: 1024px) {
+  .hero-description-text {
+    font-size: 1.125rem;
+  }
+}
+
+/* Styles pour les compétences */
+.hero-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.skill-tag {
+  background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+  color: #374151;
+  padding: 0.5rem 1rem;
+  border-radius: 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 1px solid #d1d5db;
+  transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+  background: linear-gradient(135deg, #e5e7eb, #d1d5db);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cta-container {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.cta-button {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px 0 rgba(16, 185, 129, 0.3);
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px 0 rgba(16, 185, 129, 0.4);
+}
+
+.download-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Styles améliorés pour les icônes de réseaux sociaux */
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.social-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  color: white;
+}
+
+.social-icon.linkedin {
+  background: linear-gradient(135deg, #0077b5, #005885);
+  box-shadow: 0 4px 14px 0 rgba(0, 119, 181, 0.3);
+}
+
+.social-icon.linkedin:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px 0 rgba(0, 119, 181, 0.4);
+  background: linear-gradient(135deg, #005885, #004666);
+}
+
+.social-icon.github {
+  background: linear-gradient(135deg, #333, #24292e);
+  box-shadow: 0 4px 14px 0 rgba(51, 51, 51, 0.3);
+}
+
+.social-icon.github:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px 0 rgba(51, 51, 51, 0.4);
+  background: linear-gradient(135deg, #24292e, #1a1e22);
+}
+
+.social-icon.gmail {
+  background: linear-gradient(135deg, #ea4335, #d33b2c);
+  box-shadow: 0 4px 14px 0 rgba(234, 67, 53, 0.3);
+}
+
+.social-icon.gmail:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px 0 rgba(234, 67, 53, 0.4);
+  background: linear-gradient(135deg, #d33b2c, #b52d20);
+}
+
+.hero-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-container {
+  width: 22rem;
+  height: 22rem;
+  margin: 0 auto;
+  position: relative;
+}
+
+@media (max-width: 640px) {
+  .profile-container {
+    width: 18rem;
+    height: 18rem;
+  }
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  border: 4px solid white;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.profile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.profile-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+}
+
+.profile-icon {
+  width: 8rem;
+  height: 8rem;
+  color: #9ca3af;
+}
+
+.decoration {
+  position: absolute;
+  border-radius: 50%;
+  animation: pulse 4s ease-in-out infinite;
+}
+
+.decoration-1 {
+  top: -1rem;
+  right: -1rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  background: linear-gradient(135deg, #4ade80, #22c55e);
+  animation-delay: 0s;
+}
+
+.decoration-2 {
+  bottom: -1.5rem;
+  left: -1.5rem;
+  width: 4.5rem;
+  height: 4.5rem;
+  background: linear-gradient(135deg, #a78bfa, #8b5cf6);
+  animation-delay: 1s;
+}
+
+.decoration-3 {
+  top: 50%;
+  right: -2rem;
+  width: 3rem;
+  height: 3rem;
+  background: linear-gradient(135deg, #60a5fa, #3b82f6);
+  animation-delay: 2s;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .hero-main {
+    padding-top: 4rem;
+  }
+
+  .circle-1,
+  .circle-2,
+  .circle-3 {
+    display: none;
+  }
+
+  .hero-name {
+    font-size: 2.5rem;
+  }
+
+  .hero-title {
+    font-size: 1.25rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .hero-description-text {
+    font-size: 0.9rem;
+  }
+
+  .skill-tag {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .cta-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .cta-button {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.875rem;
+  }
+
+  .social-icons {
+    gap: 0.75rem;
+  }
+
+  .social-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cta-container {
+    width: 100%;
+  }
+
+  .cta-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .hero-skills {
+    justify-content: center;
+  }
+}

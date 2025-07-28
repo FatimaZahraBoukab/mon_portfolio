@@ -1,17 +1,39 @@
-
-'use client';
-import React from 'react';
-import { useLanguage } from '../contexts/LanguageContext';
+"use client"
+import type React from "react"
+import { useLanguage } from "../contexts/LanguageContext"
+import { Download, Linkedin, Github, Mail } from "lucide-react"
+import "./HeroSection.css"
 
 const HeroSection: React.FC = () => {
-  const { content } = useLanguage();
+  const { t } = useLanguage()
+
+  // Configuration des liens de réseaux sociaux
+  const socialLinks = {
+    linkedin: " https://www.linkedin.com/in/fatima-zahra-boukab-b11210286?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    github: "https://github.com/FatimaZahraBOUKAB",
+    gmail: "mailto:fatimazahraboukab9@gmail.com"
+  }
+
+  const handleDownloadCV = () => {
+    // Créer un lien de téléchargement pour forcer le téléchargement
+    const link = document.createElement('a')
+    link.href = "/documents/CV-FatimaZahraBOUKAB.pdf"
+    link.download = "CV-FatimaZahraBOUKAB.pdf"
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
+
+  const handleSocialClick = (platform: keyof typeof socialLinks) => {
+    window.open(socialLinks[platform], "_blank")
+  }
 
   return (
     <main id="home" className="hero-main">
       <div className="hero-container">
         {/* Background with gradient */}
         <div className="hero-background"></div>
-        
+
         {/* Decorative circles */}
         <div className="circle circle-1"></div>
         <div className="circle circle-2"></div>
@@ -22,35 +44,74 @@ const HeroSection: React.FC = () => {
             {/* Content */}
             <div className="hero-text">
               <div className="text-content">
-                <h2 className="hero-title">
-                  {content.hero.title}
-                </h2>
-                <p className="hero-subtitle">
-                  {content.hero.subtitle}
-                </p>
+                {/* Nom et prénom seulement */}
+                <div className="hero-greeting">
+                  <h1 className="hero-name">{t('hero.name')}</h1>
+                </div>
+                <h2 className="hero-title">{t('hero.title')}</h2>
+                <p className="hero-subtitle">{t('hero.subtitle')}</p>
+                
+                {/* Description additionnelle pour augmenter le contenu */}
+                
               </div>
 
-              {/* CTA Button */}
+              {/* CTA Container avec CV et réseaux sociaux */}
               <div className="cta-container">
-                <button className="cta-button">
-                  <svg className="download-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                  <span>{content.hero.downloadCV}</span>
+                <button className="cta-button" onClick={handleDownloadCV}>
+                  <Download className="download-icon" size={20} />
+                  <span>{t('hero.downloadCV')}</span>
                 </button>
+
+                {/* Icônes de réseaux sociaux avec Lucide React */}
+                <div className="social-icons">
+                  <button 
+                    className="social-icon linkedin" 
+                    onClick={() => handleSocialClick('linkedin')}
+                    title="LinkedIn"
+                  >
+                    <Linkedin size={24} />
+                  </button>
+                  <button 
+                    className="social-icon github" 
+                    onClick={() => handleSocialClick('github')}
+                    title="GitHub"
+                  >
+                    <Github size={24} />
+                  </button>
+                  <button 
+                    className="social-icon gmail" 
+                    onClick={() => handleSocialClick('gmail')}
+                    title="Email"
+                  >
+                    <Mail size={24} />
+                  </button>
+                </div>
               </div>
             </div>
 
             {/* Right side - Visual element */}
             <div className="hero-visual">
               <div className="profile-container">
-                {/* Profile image placeholder */}
+                {/* Profile image */}
                 <div className="profile-image">
-                  <svg className="profile-icon" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                  </svg>
+                  <img 
+                    src="/images/profile1.png" 
+                    alt="Fatima Zahra Boukab" 
+                    onError={(e) => {
+                      // Fallback si l'image ne charge pas
+                      e.currentTarget.style.display = 'none';
+                      const fallback = document.createElement('div');
+                      fallback.className = 'profile-fallback';
+                      fallback.innerHTML = `
+                        <svg className="profile-icon" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                        </svg>
+                      `;
+                      e.currentTarget.parentElement?.appendChild(fallback);
+                    }}
+                  />
                 </div>
-                
+
                 {/* Decorative elements around profile */}
                 <div className="decoration decoration-1"></div>
                 <div className="decoration decoration-2"></div>
@@ -61,7 +122,7 @@ const HeroSection: React.FC = () => {
         </div>
       </div>
     </main>
-  );
-};
+  )
+}
 
-export default HeroSection;
+export default HeroSection

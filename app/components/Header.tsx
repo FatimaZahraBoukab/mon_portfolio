@@ -5,7 +5,7 @@ import { useLanguage } from "../contexts/LanguageContext"
 import "./Header.css"
 
 const Header: React.FC = () => {
-  const { language, setLanguage, content } = useLanguage()
+  const { language, setLanguage, t } = useLanguage()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("home")
 
@@ -26,6 +26,38 @@ const Header: React.FC = () => {
     { key: "projects", href: "#projects" },
     { key: "contact", href: "#contact" },
   ]
+
+  // Composant pour le drapeau français
+  const FranceFlag = () => (
+    <div className="flag-container">
+      <img 
+        src="/images/FR.jpg" 
+        alt="Drapeau français" 
+        className="flag-image"
+        onError={(e) => {
+          // Fallback si l'image ne charge pas
+          e.currentTarget.style.display = 'none';
+          e.currentTarget.parentElement!.innerHTML = '🇫🇷';
+        }}
+      />
+    </div>
+  )
+
+  // Composant pour le drapeau américain
+  const USAFlag = () => (
+    <div className="flag-container">
+      <img 
+        src="/images/EN.jpg" 
+        alt="Drapeau américain" 
+        className="flag-image"
+        onError={(e) => {
+          // Fallback si l'image ne charge pas
+          e.currentTarget.style.display = 'none';
+          e.currentTarget.parentElement!.innerHTML = '🇺🇸';
+        }}
+      />
+    </div>
+  )
 
   return (
     <header className="header">
@@ -52,7 +84,7 @@ const Header: React.FC = () => {
                   className={`nav-link ${activeSection === item.key ? 'active' : ''}`}
                   onClick={() => handleNavClick(item.key)}
                 >
-                  {content.nav[item.key as keyof typeof content.nav]}
+                  {t(`nav.${item.key}`)}
                 </a>
               ))}
             </div>
@@ -66,13 +98,7 @@ const Header: React.FC = () => {
                 className={`language-option ${language === "fr" ? "active" : ""}`}
                 title="Français"
               >
-                <div className="flag-container">
-                  <div className="flag france-flag">
-                    <div className="flag-stripe blue"></div>
-                    <div className="flag-stripe white"></div>
-                    <div className="flag-stripe red"></div>
-                  </div>
-                </div>
+                <FranceFlag />
                 <span className="lang-text">FR</span>
               </button>
               <button
@@ -80,20 +106,7 @@ const Header: React.FC = () => {
                 className={`language-option ${language === "en" ? "active" : ""}`}
                 title="English"
               >
-                <div className="flag-container">
-                  <div className="flag usa-flag">
-                    <div className="flag-stars"></div>
-                    <div className="flag-stripes">
-                      <div className="stripe red"></div>
-                      <div className="stripe white"></div>
-                      <div className="stripe red"></div>
-                      <div className="stripe white"></div>
-                      <div className="stripe red"></div>
-                      <div className="stripe white"></div>
-                      <div className="stripe red"></div>
-                    </div>
-                  </div>
-                </div>
+                <USAFlag />
                 <span className="lang-text">EN</span>
               </button>
             </div>
@@ -122,7 +135,7 @@ const Header: React.FC = () => {
                   setIsMobileMenuOpen(false)
                 }}
               >
-                {content.nav[item.key as keyof typeof content.nav]}
+                {t(`nav.${item.key}`)}
               </a>
             ))}
 
@@ -133,33 +146,14 @@ const Header: React.FC = () => {
                   onClick={() => handleLanguageChange("fr")}
                   className={`language-option ${language === "fr" ? "active" : ""}`}
                 >
-                  <div className="flag-container">
-                    <div className="flag france-flag">
-                      <div className="flag-stripe blue"></div>
-                      <div className="flag-stripe white"></div>
-                      <div className="flag-stripe red"></div>
-                    </div>
-                  </div>
+                  <FranceFlag />
                   <span className="lang-text">FR</span>
                 </button>
                 <button
                   onClick={() => handleLanguageChange("en")}
                   className={`language-option ${language === "en" ? "active" : ""}`}
                 >
-                  <div className="flag-container">
-                    <div className="flag usa-flag">
-                      <div className="flag-stars"></div>
-                      <div className="flag-stripes">
-                        <div className="stripe red"></div>
-                        <div className="stripe white"></div>
-                        <div className="stripe red"></div>
-                        <div className="stripe white"></div>
-                        <div className="stripe red"></div>
-                        <div className="stripe white"></div>
-                        <div className="stripe red"></div>
-                      </div>
-                    </div>
-                  </div>
+                  <USAFlag />
                   <span className="lang-text">EN</span>
                 </button>
               </div>

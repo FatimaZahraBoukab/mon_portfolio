@@ -1,16 +1,17 @@
-
 'use client';
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 type LanguageContextType = {
   language: 'fr' | 'en';
   setLanguage: (lang: 'fr' | 'en') => void;
+  t: (key: string) => string;
   content: any;
 };
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-const content = {
+// Système de traduction avec clés imbriquées
+const translations = {
   fr: {
     nav: {
       home: 'Accueil',
@@ -22,9 +23,16 @@ const content = {
       contact: 'Contact'
     },
     hero: {
-      title: 'Graphic Designer & Web Developer',
-      subtitle: 'Transformer les idées en visuels époustouflants et sites web fonctionnels. Créons quelque chose d\'incroyable ensemble.',
-      downloadCV: 'Télécharger CV'
+   
+      name: 'Fatima Zahra Boukab',
+      title: 'Développeuse Web & Logicielle',
+      subtitle: 'Passionnée par la création d\'applications web modernes et de solutions logicielles innovantes.',
+      downloadCV: 'Télécharger CV',
+      social: {
+        linkedin: 'Profil LinkedIn',
+        github: 'Profil GitHub',
+        gmail: 'Envoyer un email'
+      }
     }
   },
   en: {
@@ -38,9 +46,16 @@ const content = {
       contact: 'Contact Me'
     },
     hero: {
-      title: 'Graphic Designer & Web Developer',
-      subtitle: 'Transforming ideas into stunning visuals and functional websites. Let\'s create something amazing together.',
-      downloadCV: 'Download Resume'
+      greeting: 'Hello, I am',
+      name: 'Fatima Zahra Boukab',
+      title: 'Web & Software Developer',
+      subtitle: 'Passionate about creating modern web applications and innovative software solutions.',
+      downloadCV: 'Download Resume',
+      social: {
+        linkedin: 'LinkedIn Profile',
+        github: 'GitHub Profile',
+        gmail: 'Send Email'
+      }
     }
   }
 };
@@ -48,11 +63,29 @@ const content = {
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<'fr' | 'en'>('fr');
 
+  // Fonction de traduction avec support des clés imbriquées
+  const t = (key: string): string => {
+    const keys = key.split('.');
+    let value: any = translations[language];
+    
+    for (const k of keys) {
+      if (value && typeof value === 'object' && k in value) {
+        value = value[k];
+      } else {
+        console.warn(`Translation key "${key}" not found for language "${language}"`);
+        return key; // Retourne la clé si la traduction n'est pas trouvée
+      }
+    }
+    
+    return typeof value === 'string' ? value : key;
+  };
+
   return (
     <LanguageContext.Provider value={{ 
       language, 
       setLanguage, 
-      content: content[language] 
+      t,
+      content: translations[language] 
     }}>
       {children}
     </LanguageContext.Provider>
