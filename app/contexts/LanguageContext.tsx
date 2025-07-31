@@ -70,24 +70,30 @@ const translations = {
       categories: {
         frontend: {
           title: "Développement Frontend",
-        
         },
         backend: {
           title: "Développement Backend",
-        
         },
         programming: {
           title: "Langages de Programmation",
         },
         database: {
           title: "Gestion de Bases de Données",
-        
         },
         tools: {
           title: " Git & Github ",
-         
         }
       }
+    },
+    experience: {
+      title: "Expérience",
+      miacorp: {
+        title: "Stage – Développeuse Web Full Stack",
+        company: "MiaCorp",
+        location: "Tanger - Avril 2025 à Juin 2025",
+        description: "Projet de Fin d'Études : Développement d'une application web de gestion automatisée de documents juridiques pour les PME. Conception de l'interface utilisateur avec ReactJS, intégration de l'API Google Docs pour la génération dynamique de documents, et mise en place d'un backend sécurisé avec FastAPI. Le projet met l'accent sur l'automatisation des tâches répétitives et la fiabilité du traitement documentaire.",
+        technologies: ["ReactJS", "FastAPI", "CouchDB", "API Google Docs"]
+      },
     },
   },
   en: {
@@ -145,29 +151,33 @@ const translations = {
     },
     skills: {
       title: "My Skills",
-     
       categories: {
         frontend: {
           title: "Frontend Development",
-          
         },
         backend: {
           title: "Backend Development",
-          
         },
         programming: {
           title: "Programming Languages",
-        
         },
         database: {
           title: "Database Management",
-      
         },
         tools: {
           title: " Git & Github",
-         
         }
       }
+    },
+    experience: {
+      title: "Experience",
+      miacorp: {
+        title: "Internship – Full Stack Web Developer",
+        company: "MiaCorp",
+         location: "Tanger - Avril 2025 fuck Juin 2025",
+        description: "Final Year Project: Development of a web application for automated legal document management for SMEs. User interface design with ReactJS, integration of Google Docs API for dynamic document generation, and implementation of a secure backend with FastAPI. The project focuses on automating repetitive tasks and ensuring reliable document processing.",
+        technologies: ["ReactJS", "FastAPI", "CouchDB", "Google Docs API"]
+      },
     },
   },
 }

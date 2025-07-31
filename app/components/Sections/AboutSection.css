@@ -5,6 +5,65 @@
   overflow: hidden;
 }
 
+
+
+/* Background Decorations */
+.about-bg-decoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(166, 126, 200, 0.1), rgba(195, 157, 199, 0.05));
+  animation: float 6s ease-in-out infinite;
+}
+
+.about-circle-1 {
+  width: 200px;
+  height: 200px;
+  top: 10%;
+  left: -5%;
+  animation-delay: 0s;
+}
+
+.about-circle-2 {
+  width: 150px;
+  height: 150px;
+  top: 60%;
+  right: -3%;
+  animation-delay: 2s;
+}
+
+
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+/* Section Header */
+.experience-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.experience-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #a67ec8ff, #987cb4ff, #c39dc7ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.025em;
+}
+
 .about-container {
   max-width: 1500px;
   margin: 0 auto;

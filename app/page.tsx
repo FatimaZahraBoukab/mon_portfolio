@@ -4,6 +4,7 @@ import HeroSection from './components/Sections/HeroSection';
 import AboutSection from './components/Sections/AboutSection';
 import EducationSection from "./components/Sections/EducationSection"
 import SkillsSection from './components/Sections/SkillsSection';
+import ExperienceSection from './components/Sections/ExperienceSection';
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <AboutSection />
       <EducationSection/>
       <SkillsSection/>
+      <ExperienceSection/>
     </div>
   );
 }
