@@ -1,0 +1,192 @@
+.about-main {
+  padding: 3.5rem 0;
+  position: relative;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.about-container {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 10;
+}
+/* Section Header */
+.about-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.about-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #a67ec8ff, #987cb4ff, #c39dc7ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.025em;
+}
+
+@media (min-width: 640px) {
+  .about-title {
+    font-size: 3rem;
+  }
+}
+
+/* Main Content */
+.about-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+  max-width: 4xl;
+
+}
+
+/* About Description */
+.about-description {
+  font-size: 1.125rem;
+  color: #4b5563;
+  line-height: 1.8;
+  text-align: center;
+  max-width: 60rem;
+
+}
+
+.about-description strong {
+  background: linear-gradient(135deg, #a67ec8ff, #987cb4ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+
+/* Stats Section - Design épuré et élégant */
+.about-stats {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 3rem;
+  width: 100%;
+  max-width: 700px;
+
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  flex: 1;
+  position: relative;
+}
+
+/* Séparateur entre les statistiques */
+.stat-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: -1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 60%;
+  background: linear-gradient(to bottom, transparent, #e2e8f0, transparent);
+}
+
+.stat-number {
+  font-size: 3.5rem;
+  font-weight: 900;
+  line-height: 1;
+  text-shadow: none; /* Suppression de l'ombre pour un look plus propre */
+}
+
+/* Couleurs plus subtiles et professionnelles */
+.stat-item:first-child .stat-number {
+  background: linear-gradient(135deg, #059669, #047857);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.stat-item:last-child .stat-number {
+  background: linear-gradient(135deg, #0369a1, #0284c7);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.stat-description {
+  font-size: 1rem;
+  color: #64748b;
+  line-height: 1.5;
+  font-weight: 500;
+  max-width: 180px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .about-main {
+    padding: 4rem 0;
+  }
+  
+  .about-title {
+    font-size: 2rem;
+  }
+  
+  .about-description {
+    font-size: 1rem;
+    text-align: left;
+  }
+  
+  .about-stats {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem 1.5rem;
+    max-width: 400px;
+  }
+  
+  .stat-item {
+    gap: 0.5rem;
+    padding: 0;
+  }
+  
+  .stat-item:not(:last-child)::after {
+    display: none;
+  }
+  
+  .stat-number {
+    font-size: 3rem;
+  }
+  
+  .stat-description {
+    font-size: 0.9rem;
+    max-width: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-container {
+    padding: 0 1rem;
+  }
+  
+  .about-header {
+    margin-bottom: 1rem;
+  }
+  
+  .about-content {
+    gap: 3rem;
+  }
+  
+  .about-stats {
+    margin: 0 -0.5rem;
+    border-radius: 1rem;
+    padding: 1.5rem 1rem;
+  }
+  
+  .stat-number {
+    font-size: 2.5rem;
+  }
+}
+

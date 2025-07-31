@@ -1,7 +1,7 @@
 "use client"
 import type React from "react"
 import { useState } from "react"
-import { useLanguage } from "../contexts/LanguageContext"
+import { useLanguage } from "../../contexts/LanguageContext"
 import "./Header.css"
 
 const Header: React.FC = () => {

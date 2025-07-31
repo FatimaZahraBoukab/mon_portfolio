@@ -1,6 +1,6 @@
 "use client"
 import type React from "react"
-import { useLanguage } from "../contexts/LanguageContext"
+import { useLanguage } from "../../contexts/LanguageContext"
 import { Download, Linkedin, Github, Mail } from "lucide-react"
 import "./HeroSection.css"
 
@@ -112,10 +112,9 @@ const HeroSection: React.FC = () => {
                   />
                 </div>
 
-                {/* Decorative elements around profile */}
-                <div className="decoration decoration-1"></div>
-                <div className="decoration decoration-2"></div>
-                <div className="decoration decoration-3"></div>
+             
+              
+               
               </div>
             </div>
           </div>

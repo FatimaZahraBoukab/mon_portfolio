@@ -5,7 +5,7 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'Fatima Zahra BOUKAB - Portfolio',
-  description: 'Portfolio de Fatima Zahra BOUKAB - Graphic Designer & Web Developer',
+  description: 'Portfolio de Fatima Zahra BOUKAB ',
 };
 
 export default function RootLayout({
