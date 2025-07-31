@@ -17,7 +17,7 @@ const SkillsSection: React.FC = () => {
 
   const skills = {
     frontend: {
-      icon: <MdDeveloperMode size={32} color="#3B82F6" />,
+      icon: <MdDeveloperMode size={28} />,
       technologies: [
         { name: "HTML5", icon: <SiHtml5 color="#E34F26" /> },
         { name: "CSS3", icon: <SiCss3 color="#1572B6" /> },
@@ -27,7 +27,7 @@ const SkillsSection: React.FC = () => {
       ]
     },
     backend: {
-      icon: <FaServer size={32} color="#10B981" />,
+      icon: <FaServer size={28} />,
       technologies: [
         { name: "Node.js", icon: <SiNodedotjs color="#339933" /> },
         { name: "Next.js", icon: <SiNextdotjs color="#000000" /> },
@@ -38,7 +38,7 @@ const SkillsSection: React.FC = () => {
       ]
     },
     programming: {
-      icon: <FaCode size={32} color="#8B5CF6" />,
+      icon: <FaCode size={28} />,
       technologies: [
         { name: "Java", icon: <FaJava color="#ED8B00" /> },
         { name: "C", icon: <SiC color="#A8B9CC" /> },
@@ -48,7 +48,7 @@ const SkillsSection: React.FC = () => {
       ]
     },
     database: {
-      icon: <FaDatabase size={32} color="#F59E0B" />,
+      icon: <FaDatabase size={28} />,
       technologies: [
         { name: "MySQL", icon: <SiMysql color="#4479A1" /> },
         { name: "MongoDB", icon: <SiMongodb color="#47A248" /> },
@@ -56,7 +56,7 @@ const SkillsSection: React.FC = () => {
       ]
     },
     tools: {
-      icon: <FaTools size={32} color="#EF4444" />,
+      icon: <FaTools size={28} />,
       technologies: [
         { name: "Git", icon: <SiGit color="#F05032" /> },
         { name: "GitHub", icon: <SiGithub color="#181717" /> },
@@ -65,27 +65,82 @@ const SkillsSection: React.FC = () => {
   }
 
   return (
-    <section className="skills-main">
+    <section id="skills" className="skills-section">
       <div className="skills-container">
-        <div className="skills-header">
-          <h2 className="skills-title">{t("skills.title")}</h2>
-        </div>
+        <h2 className="skills-title">{t("skills.title")}</h2>
+        
         <div className="skills-grid">
-          {Object.entries(skills).map(([key, category]) => (
-            <div key={key} className={`skill-category ${key}`}>
-              <div className="category-header">
-                <div className={`category-icon ${key}`}>{category.icon}</div>
-                <h3 className="category-title">{t(`skills.categories.${key}.title`)}</h3>
-              </div>
-              <div className="skills-icons">
-                {category.technologies.map((tech) => (
-                  <div key={tech.name} className="skill-icon" title={tech.name}>
-                    {tech.icon}
-                  </div>
-                ))}
-              </div>
+          {/* Première ligne - 3 cartes */}
+          <div className="skill-card frontend">
+            <div className="card-icon-wrapper">
+              <div className="card-icon blue">{skills.frontend.icon}</div>
             </div>
-          ))}
+            <h3 className="card-title">{t("skills.categories.frontend.title")}</h3>
+            <div className="tech-icons">
+              {skills.frontend.technologies.map((tech) => (
+                <div key={tech.name} className="tech-icon" title={tech.name}>
+                  {tech.icon}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="skill-card backend">
+            <div className="card-icon-wrapper">
+              <div className="card-icon green">{skills.backend.icon}</div>
+            </div>
+            <h3 className="card-title">{t("skills.categories.backend.title")}</h3>
+            <div className="tech-icons">
+              {skills.backend.technologies.map((tech) => (
+                <div key={tech.name} className="tech-icon" title={tech.name}>
+                  {tech.icon}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="skill-card programming">
+            <div className="card-icon-wrapper">
+              <div className="card-icon purple">{skills.programming.icon}</div>
+            </div>
+            <h3 className="card-title">{t("skills.categories.programming.title")}</h3>
+            <div className="tech-icons">
+              {skills.programming.technologies.map((tech) => (
+                <div key={tech.name} className="tech-icon" title={tech.name}>
+                  {tech.icon}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Deuxième ligne - 2 cartes centrées */}
+          <div className="skill-card database">
+            <div className="card-icon-wrapper">
+              <div className="card-icon yellow">{skills.database.icon}</div>
+            </div>
+            <h3 className="card-title">{t("skills.categories.database.title")}</h3>
+            <div className="tech-icons">
+              {skills.database.technologies.map((tech) => (
+                <div key={tech.name} className="tech-icon" title={tech.name}>
+                  {tech.icon}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="skill-card tools">
+            <div className="card-icon-wrapper">
+              <div className="card-icon red">{skills.tools.icon}</div>
+            </div>
+            <h3 className="card-title">{t("skills.categories.tools.title")}</h3>
+            <div className="tech-icons">
+              {skills.tools.technologies.map((tech) => (
+                <div key={tech.name} className="tech-icon" title={tech.name}>
+                  {tech.icon}
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
