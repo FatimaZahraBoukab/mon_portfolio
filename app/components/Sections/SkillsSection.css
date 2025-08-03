@@ -7,6 +7,49 @@
   justify-content: center;
 }
 
+
+/* ===== BACKGROUND DECORATIONS ===== */
+.skills-bg-decoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(166, 126, 200, 0.1), rgba(195, 157, 199, 0.05));
+  animation: float 6s ease-in-out infinite;
+}
+
+.skills-circle-1 {
+  width: 200px;
+  height: 200px;
+  top: 10%;
+  left: -5%;
+  animation-delay: 0s;
+}
+
+.skills-circle-2 {
+  width: 150px;
+  height: 150px;
+  top: 60%;
+  right: -3%;
+  animation-delay: 2s;
+}
+
+.skills-circle-3 {
+  width: 100px;
+  height: 100px;
+  top: 80%;
+  left: 20%;
+  animation-delay: 4s;
+}
+
 .skills-container {
   max-width: 1200px;
   width: 100%;

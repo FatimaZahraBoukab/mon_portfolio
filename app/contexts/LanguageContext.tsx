@@ -95,6 +95,89 @@ const translations = {
         technologies: ["ReactJS", "FastAPI", "CouchDB", "API Google Docs"]
       },
     },
+    projects: {
+      title: "Mes Projets",
+      subtitle: "Découvrez une sélection de mes projets développés avec passion",
+      viewMore: "Voir Plus",
+      viewGithub: "Voir sur GitHub",
+      items: {
+        moneymind: {
+           title: "MoneyMind",
+           description: "Application Laravel de gestion financière : suivi des revenus et dépenses, objectifs d'épargne, alertes budgétaires, notifications et conseils IA.",
+        },
+        scorematch: {
+          title: "ScoreMatch",
+          description: "Une application de gestion et de suivi des matchs de football, permettant aux administrateurs de gérer les utilisateurs, les matchs, les équipes, et plus encore.",
+        },
+        festify: {
+          title: "Festify", 
+          description: "Application web Django/React de gestion d'événements complète. Planification, sélection de services, gestion budgétaire, réservations et suivi.",
+        },
+        flaskProfile: {
+          title: "MonEspace",
+          description: "Application Flask de gestion de profil utilisateur. Fonctionnalités : inscription/connexion, modification profil et mot de passe, upload photo, historique connexions.",
+        },
+        techHorizons: {
+          title: "Tech Horizons",
+          description: "Application Laravel de gestion d'un magazine en ligne : abonnements par thème, historique, recommandations, publication d'articles, rôles multiples.",
+        },
+        mazeProject: {
+          title: "Maze ",
+          description: "Jeu de labyrinthe en C++ avec Raylib. Labyrinthes générés aléatoirement avec trois niveaux de difficulté. Le joueur doit atteindre la sortie en un temps minimum.",
+        }
+      }
+    },
+    contact: {
+      title: "Contactez-moi",
+      subtitle: "Travaillons ensemble sur votre prochain projet !",
+      info: {
+        title: "Mes Informations",
+        email: {
+          label: "Email",
+        },
+        phone: {
+          label: "Téléphone",
+        },
+        location: {
+          label: "Localisation",
+        },
+        linkedin: {
+          label: "LinkedIn",
+        }
+      },
+      form: {
+        title: "Envoyez un message",
+        firstName: {
+          label: "Prénom",
+          placeholder: "Votre prénom"
+        },
+        name: {
+          label: "Nom",
+          placeholder: "Votre nom"
+        },
+        email: {
+          label: "Email",
+          placeholder: "votre.email@example.com"
+        },
+        subject: {
+          label: "Sujet",
+          placeholder: "Sujet de votre message"
+        },
+        message: {
+          label: "Message",
+          placeholder: "Écrivez votre message ici..."
+        },
+        submit: "Envoyer le message",
+        sending: "Envoi en cours...",
+        success: "Votre message a été envoyé avec succès ! Je vous répondrai bientôt.",
+        error: "Une erreur s'est produite lors de l'envoi. Veuillez réessayer."
+      }
+    },
+    footer: {
+ 
+  rights: "Tous droits réservés"
+},
+
   },
   en: {
     nav: {
@@ -174,11 +257,93 @@ const translations = {
       miacorp: {
         title: "Internship – Full Stack Web Developer",
         company: "MiaCorp",
-         location: "Tanger - Avril 2025 fuck Juin 2025",
+        location: "Tangier - April 2025 to June 2025",
         description: "Final Year Project: Development of a web application for automated legal document management for SMEs. User interface design with ReactJS, integration of Google Docs API for dynamic document generation, and implementation of a secure backend with FastAPI. The project focuses on automating repetitive tasks and ensuring reliable document processing.",
         technologies: ["ReactJS", "FastAPI", "CouchDB", "Google Docs API"]
       },
     },
+    projects: {
+      title: "My Projects",
+      subtitle: "Discover a selection of my projects developed with passion",
+      viewMore: "View More",
+      viewGithub: "View on GitHub",
+      items: {
+        moneymind: {
+           title: "MoneyMind",
+           description: "Laravel financial management application: income and expense tracking, savings goals, budget alerts, notifications and AI advice.",
+        },
+        scorematch: {
+          title: "ScoreMatch",
+          description: "A football match management and tracking application, allowing administrators to manage users, matches, teams, and more.",
+        },
+        festify: {
+          title: "Festify", 
+          description: "Complete Django/React event management web application. Planning, service selection, budget management, reservations and tracking.",
+        },
+        flaskProfile: {
+          title: "MonEspace",
+          description: "Flask user profile management application. Features: registration/login, profile and password modification, photo upload, connection history.",
+        },
+        techHorizons: {
+          title: "Tech Horizons",
+          description: "Laravel application for managing an online magazine: theme subscriptions, history, recommendations, article publishing, multiple roles.",
+        },
+        mazeProject: {
+          title: "Maze ",
+          description: "C++ maze game with Raylib. Randomly generated mazes with three difficulty levels. The player must reach the exit in minimum time.",
+        }
+      }
+    },
+    contact: {
+      title: "Get In Touch",
+      subtitle: "Let's make something awesome together!",
+      info: {
+        title: "My Information",
+        email: {
+          label: "Email",
+        },
+        phone: {
+          label: "Phone",
+        },
+        location: {
+          label: "Location",
+        },
+        linkedin: {
+          label: "LinkedIn",
+        }
+      },
+      form: {
+        title: "Send a Message",
+        firstName: {
+          label: "First Name",
+          placeholder: "Your first name"
+        },
+        name: {
+          label: "Last Name",
+          placeholder: "Your last name"
+        },
+        email: {
+          label: "Email",
+          placeholder: "your.email@example.com"
+        },
+        subject: {
+          label: "Subject",
+          placeholder: "Message subject"
+        },
+        message: {
+          label: "Message",
+          placeholder: "Write your message here..."
+        },
+        submit: "Send Message",
+        sending: "Sending...",
+        success: "Your message has been sent successfully! I will reply to you soon.",
+        error: "An error occurred while sending. Please try again."
+      }
+    },
+    footer: {
+
+  rights: "All Rights Reserved"
+},
   },
 }
 
