@@ -4,8 +4,7 @@
   background: #ffffff;
   position: relative;
   overflow: hidden;
-  padding: 2rem ;
-
+  padding: 2rem;
 }
 
 /* Effets de fond animés */
@@ -114,8 +113,6 @@
   position: relative;
   z-index: 10;
 }
-
-/* Toggle de langue - SUPPRIMÉ */
 
 /* Header */
 .contact-header {
@@ -269,32 +266,30 @@
   backdrop-filter: blur(10px);
   border: 1px solid rgba(166, 126, 200, 0.15);
   border-radius: 20px;
-  padding: 1rem;
+  padding: 2rem;
   box-shadow: 0 8px 32px rgba(166, 126, 200, 0.1);
-  width: 550px; 
-  height: 450px;
-  overflow: hidden;
+  width: 100%;
+  max-width: 550px;
+  min-height: auto;
 }
-
-
 
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.4rem;
+  gap: 1rem;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 0.1rem;
-  height : 70px;
+  gap: 0.5rem;
+  min-height: auto;
 }
 
 .form-label {
@@ -328,7 +323,8 @@
   color: #374151;
   font-size: 1rem;
   transition: all 0.3s ease;
-  height: 45px
+  min-height: 45px;
+  box-sizing: border-box;
 }
 
 .form-input::placeholder,
@@ -361,12 +357,12 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-top: 3.5rem;
+  margin-top: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-
+  min-height: 48px;
 }
 
 .form-submit:hover:not(:disabled) {
@@ -465,13 +461,19 @@
   }
   
   .contact-main-title {
-    font-size: 3rem;
+    font-size: 2.5rem;
+  }
+  
+  .contact-form-section {
+    max-width: none;
+    width: 100%;
   }
 }
 
 @media (max-width: 768px) {
   .contact-section {
-    padding: 3rem 0;
+    padding: 2rem 1rem;
+    min-height: auto;
   }
   
   .contact-container {
@@ -479,32 +481,97 @@
   }
   
   .contact-main-title {
-    font-size: 2.5rem;
+    font-size: 2rem;
+  }
+  
+  .contact-header {
+    margin-bottom: 2rem;
+  }
+  
+  .contact-layout {
+    gap: 2rem;
   }
   
   .contact-form-section {
-    padding: 2rem;
+    padding: 1.5rem;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
   
   .form-row {
     grid-template-columns: 1fr;
+    gap: 1rem;
   }
   
-  .language-toggle {
-    position: static;
-    display: flex;
-    justify-content: center;
+  .form-group {
+    min-height: auto;
+  }
+  
+  .form-input,
+  .form-textarea {
+    font-size: 16px; /* Évite le zoom sur iOS */
+    padding: 1rem;
+    padding-left: 2.5rem;
+  }
+  
+  .form-textarea {
+    padding-left: 1rem;
+    min-height: 120px;
+  }
+  
+  .form-submit {
+    padding: 1rem;
+    font-size: 1rem;
+    margin-top: 1.5rem;
+    min-height: 52px;
+  }
+  
+  .contact-info-section {
+    padding: 1rem 0;
+  }
+  
+  .contact-info-list {
+    gap: 1.5rem;
     margin-bottom: 2rem;
   }
 }
 
 @media (max-width: 480px) {
+  .contact-section {
+    padding: 1.5rem 0.5rem;
+  }
+  
+  .contact-container {
+    padding: 0 0.5rem;
+  }
+  
   .contact-main-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
   
   .contact-form-section {
-    padding: 1.5rem;
+    padding: 1rem;
+    border-radius: 12px;
+  }
+  
+  .form-input,
+  .form-textarea {
+    padding: 0.875rem;
+    padding-left: 2.25rem;
+    font-size: 16px;
+  }
+  
+  .form-textarea {
+    padding-left: 0.875rem;
+    min-height: 100px;
+  }
+  
+  .form-submit {
+    padding: 0.875rem;
+    font-size: 0.95rem;
+    min-height: 48px;
   }
   
   .contact-info-item {
@@ -514,10 +581,54 @@
   .contact-icon {
     width: 40px;
     height: 40px;
+    font-size: 1rem;
   }
   
   .social-link {
     width: 48px;
     height: 48px;
+  }
+  
+  .contact-info-details h3 {
+    font-size: 1rem;
+  }
+  
+  .contact-info-details p,
+  .contact-info-details a {
+    font-size: 0.9rem;
+  }
+}
+
+/* Corrections spécifiques pour très petits écrans */
+@media (max-width: 360px) {
+  .contact-form-section {
+    padding: 0.75rem;
+  }
+  
+  .form-input,
+  .form-textarea {
+    padding: 0.75rem;
+    padding-left: 2rem;
+  }
+  
+  .form-textarea {
+    padding-left: 0.75rem;
+  }
+  
+  .form-input-icon {
+    left: 8px;
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* Amélioration pour le scroll sur mobile */
+@media (max-width: 768px) {
+  .contact-section {
+    overflow-x: hidden;
+  }
+  
+  * {
+    box-sizing: border-box;
   }
 }

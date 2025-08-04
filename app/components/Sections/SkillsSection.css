@@ -250,9 +250,12 @@
     height: 220px;
   }
 
+  /* MODIFICATION PRINCIPALE : Garder 3 colonnes pour les icônes technos sur mobile */
   .tech-icons {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 0.75rem;
+    justify-items: center;
+    align-items: center;
   }
 
   .tech-icon {
@@ -270,6 +273,7 @@
   .skill-card {
     padding: 1.25rem;
     border-radius: 1rem;
+    height: 200px; /* Réduction légère de la hauteur pour compenser */
   }
 
   .card-icon {
@@ -282,13 +286,36 @@
     margin: 1.5rem 0 1rem 0;
   }
 
+  /* MAINTENIR 3 colonnes même sur très petits écrans */
   .tech-icons {
+    grid-template-columns: repeat(3, 1fr);
     gap: 0.5rem;
+    justify-items: center;
+    align-items: center;
   }
 
   .tech-icon {
     width: 2.25rem;
     height: 2.25rem;
     font-size: 1.1rem;
+    border-radius: 0.5rem;
+  }
+}
+
+/* Ajustement spécifique pour les cartes avec moins d'icônes */
+.skill-card.database .tech-icons,
+.skill-card.tools .tech-icons {
+  justify-content: center;
+}
+
+/* Animation float pour les décorations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+    opacity: 1;
   }
 }

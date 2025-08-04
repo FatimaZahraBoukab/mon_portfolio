@@ -237,22 +237,25 @@
   border-radius: 50px;
 }
 
-/* Mobile language selector */
+/* Mobile language selector - TOUJOURS affiché dans le menu mobile */
 .mobile-language-selector {
-  display: none;
+  display: flex;
+  justify-content: center;
   margin-top: 1.5rem;
   padding-top: 1.5rem;
   border-top: 1px solid rgba(166, 126, 200, 0.1);
 }
 
+/* CORRECTIONS MOBILE SPÉCIFIQUES */
 @media (max-width: 767px) {
+  /* Cacher le sélecteur de langue du header sur mobile */
   .language-toggle {
-    display: none;
+    display: none !important;
   }
 
+  /* Le sélecteur mobile est toujours affiché dans le menu */
   .mobile-language-selector {
-    display: flex;
-    justify-content: center;
+    display: flex !important;
   }
 }
 
@@ -277,12 +280,35 @@
   }
   
   .name-full {
-    font-size: 1.1rem;
+    font-size: 1rem;
+  }
+  
+  /* Ajuster la largeur du logo pour laisser plus de place */
+  .logo {
+    flex: 1;
+    max-width: 65%;
+  }
+  
+  /* S'assurer que le bouton menu a assez de place */
+  .mobile-menu-btn {
+    flex-shrink: 0;
   }
 }
 
 @media (max-width: 480px) {
   .name-full {
-    font-size: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .nav-container {
+    padding: 0 0.75rem;
+  }
+  
+  .nav-content {
+    height: 3rem;
+  }
+  
+  .logo {
+    max-width: 70%;
   }
 }

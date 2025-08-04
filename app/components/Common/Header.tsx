@@ -9,6 +9,19 @@ const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("home")
   const [isScrolling, setIsScrolling] = useState(false) // État pour désactiver la détection pendant le scroll programmatique
+  const [isMobile, setIsMobile] = useState(false)
+
+  // Détecter si on est sur mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768)
+    }
+    
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   const handleLanguageChange = (lang: "fr" | "en") => {
     setLanguage(lang)
@@ -69,7 +82,7 @@ const Header: React.FC = () => {
     // Scroll fluide vers la section
     const element = document.getElementById(sectionKey)
     if (element) {
-      const headerHeight = 64 // Hauteur du header fixe
+      const headerHeight = isMobile ? 56 : 64 // Ajuster selon la taille du header
       const elementPosition = element.offsetTop - headerHeight
       
       window.scrollTo({
@@ -121,9 +134,11 @@ const Header: React.FC = () => {
     <header className="header">
       <nav className="nav-container">
         <div className="nav-content">
-          {/* Logo harmonisé avec Hero Section */}
+          {/* Logo - Version adaptée selon l'écran */}
           <div className="logo">
-            <span className="name-full">Fatima Zahra Boukab</span>
+            <span className="name-full">
+              {isMobile ? "Fatima Zahra Boukab" : "Fatima Zahra Boukab"}
+            </span>
           </div>
 
           {/* Desktop Navigation avec détection automatique */}
@@ -141,7 +156,7 @@ const Header: React.FC = () => {
             </div>
           </div>
 
-          {/* Language Toggle harmonisé */}
+          {/* Language Toggle harmonisé - Desktop seulement */}
           <div className="language-toggle">
             <div className="language-selector">
               <button
@@ -194,7 +209,7 @@ const Header: React.FC = () => {
               </button>
             ))}
 
-            {/* Mobile Language Selector */}
+            {/* Mobile Language Selector - Toujours affiché dans le menu mobile */}
             <div className="mobile-language-selector">
               <div className="language-selector">
                 <button

@@ -1,6 +1,6 @@
 /* Hero Section Styles */
 .hero-main {
-  padding-top: 2.5rem;
+  padding-top: 0; /* Suppression du padding-top pour éliminer l'espace blanc */
   position: relative;
   overflow: hidden;
 }
@@ -10,6 +10,7 @@
   min-height: 100vh;
   display: flex;
   align-items: center;
+  padding-top: 4rem; /* Compensation pour le header fixe */
 }
 
 .hero-background {
@@ -17,10 +18,6 @@
   inset: 0;
   background: linear-gradient(135deg, #dcfce7 0%, #eff6ff 50%, #f3e8ff 100%);
 }
-
-
-
-
 
 @keyframes float {
   0%,
@@ -327,8 +324,6 @@
   animation: pulse 4s ease-in-out infinite;
 }
 
-
-
 @keyframes pulse {
   0%,
   100% {
@@ -341,10 +336,44 @@
   }
 }
 
-/* Responsive adjustments */
+
 @media (max-width: 640px) {
+ 
+  .hero-container {
+    padding-top: 3.5rem;
+    min-height: calc(100vh - 3.5rem);
+  }
+
   .hero-main {
-    padding-top: 4rem;
+    padding-top: 0;
+
+  }
+
+  /* Réorganiser la grille pour mobile : image en premier */
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    /* Inverser l'ordre des éléments sur mobile */
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* L'image en premier sur mobile */
+  .hero-visual {
+    order: 1;
+    margin-bottom: 1rem;
+    padding-top: 10px ;
+  }
+
+  /* Le texte en second */
+  .hero-text {
+    order: 2;
+    gap: 2rem;
+  }
+
+  .profile-container {
+    width: 16rem;
+    height: 16rem;
   }
 
   .circle-1,
@@ -354,19 +383,23 @@
   }
 
   .hero-name {
-    font-size: 2.5rem;
+    font-size: 2rem;
+    text-align: center;
   }
 
   .hero-title {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
+    text-align: center;
   }
 
   .hero-subtitle {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    text-align: center;
   }
 
   .hero-description-text {
     font-size: 0.9rem;
+    text-align: center;
   }
 
   .skill-tag {
@@ -374,43 +407,68 @@
     padding: 0.4rem 0.8rem;
   }
 
+  .hero-skills {
+    justify-content: center;
+  }
+
   .cta-container {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
   }
 
   .cta-button {
     padding: 0.875rem 1.5rem;
     font-size: 0.875rem;
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
   }
 
   .social-icons {
-    gap: 0.75rem;
+    gap: 1rem;
+    justify-content: center;
+    padding-bottom : 10px;
+  }
+
+  .social-icon {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-container {
+    padding-top: 3rem;
+    min-height: calc(100vh - 3rem);
+  }
+
+  .profile-container {
+    width: 14rem;
+    height: 14rem;
+  }
+
+  .hero-name {
+    font-size: 1.75rem;
+  }
+
+  .hero-title {
+    font-size: 1rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .cta-button {
+    width: 100%;
+    max-width: 250px;
+    padding: 0.75rem 1.25rem;
   }
 
   .social-icon {
     width: 2.5rem;
     height: 2.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .cta-container {
-    width: 100%;
-  }
-
-  .cta-button {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .social-icons {
-    justify-content: center;
-    width: 100%;
-  }
-
-  .hero-skills {
-    justify-content: center;
   }
 }
