@@ -39,12 +39,14 @@ const ContactSection: React.FC = () => {
     setSubmitMessage(null)
 
     try {
-      const response = await fetch('/api/contact', {
+      // Créer FormData pour Netlify
+      const form = e.target as HTMLFormElement
+      const formDataToSend = new FormData(form)
+
+      const response = await fetch('/', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formDataToSend as any).toString()
       })
 
       if (response.ok) {
@@ -95,10 +97,9 @@ const ContactSection: React.FC = () => {
         <div className="contact-header">
           <h2 className="contact-main-title">
             <span className="title-gradient">
-              {language === 'en' ? 'Get in Touch' : 'Contactez -moi'}
+              {language === 'en' ? 'Get in Touch' : 'Contactez-moi'}
             </span>
           </h2>
-        
         </div>
 
         {/* Layout principal */}
@@ -113,7 +114,7 @@ const ContactSection: React.FC = () => {
                 </div>
                 <div className="contact-info-details">
                   <h3>Email</h3>
-                  <a href="mailto:fatimazahraboukab(@example.com">
+                  <a href="mailto:fatimazahraboukab9@example.com">
                     fatimazahraboukab9@example.com
                   </a>
                 </div>
@@ -126,7 +127,7 @@ const ContactSection: React.FC = () => {
                 </div>
                 <div className="contact-info-details">
                   <h3>Phone</h3>
-                  <a href="tel:+212123456789">
+                  <a href="tel:+212611955823">
                     +212 611955823
                   </a>
                 </div>
@@ -156,7 +157,7 @@ const ContactSection: React.FC = () => {
                 <Github size={24} />
               </a>
               <a
-                href=" https://www.linkedin.com/in/fatima-zahra-boukab-b11210286?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                href="https://www.linkedin.com/in/fatima-zahra-boukab-b11210286?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-link linkedin"
@@ -169,15 +170,22 @@ const ContactSection: React.FC = () => {
 
           {/* Section droite - Formulaire de contact */}
           <div className="contact-form-section">
-            
-            
             {submitMessage && (
               <div className={`form-message ${submitMessage.type}`}>
                 {submitMessage.text}
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="contact-form">
+            <form 
+              name="contact" 
+              method="POST" 
+              data-netlify="true"
+              onSubmit={handleSubmit} 
+              className="contact-form"
+            >
+              {/* Champ caché pour Netlify */}
+              <input type="hidden" name="form-name" value="contact" />
+
               {/* Première ligne - Prénom et Nom */}
               <div className="form-row">
                 <div className="form-group">
