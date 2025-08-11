@@ -105,5 +105,3 @@ export async function POST(request: NextRequest) {
   }
 }
 
-// Vous pouvez consulter les messages directement dans la base de données
-// Le fichier database.sqlite sera créé automatiquement dans le dossier racine de votre projet

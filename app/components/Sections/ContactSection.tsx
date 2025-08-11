@@ -38,22 +38,34 @@ const ContactSection: React.FC = () => {
     setIsSubmitting(true)
     setSubmitMessage(null)
 
-    try {
-      // Créer FormData pour Netlify
-      const form = e.target as HTMLFormElement
-      const formDataToSend = new FormData(form)
+    console.log('📤 Envoi du formulaire...', formData)
 
-      const response = await fetch('/', {
+    try {
+      const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formDataToSend as any).toString()
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: `${formData.firstName} ${formData.name}`,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        }),
       })
+
+      console.log('📡 Response status:', response.status)
+      
+      const result = await response.json()
+      console.log('📄 Response data:', result)
 
       if (response.ok) {
         setSubmitMessage({
           type: 'success',
-          text: t('contact.form.success')
+          text: t('contact.form.success') || 'Message envoyé avec succès !'
         })
+        console.log('✅ Message sauvegardé avec l\'ID:', result.id)
+        
         // Reset form
         setFormData({
           firstName: '',
@@ -63,12 +75,13 @@ const ContactSection: React.FC = () => {
           message: ''
         })
       } else {
-        throw new Error('Failed to send message')
+        throw new Error(result.error || 'Failed to send message')
       }
     } catch (error) {
+      console.error('❌ Erreur lors de l\'envoi:', error)
       setSubmitMessage({
         type: 'error',
-        text: t('contact.form.error')
+        text: t('contact.form.error') || 'Une erreur est survenue. Veuillez réessayer.'
       })
     } finally {
       setIsSubmitting(false)
@@ -114,8 +127,8 @@ const ContactSection: React.FC = () => {
                 </div>
                 <div className="contact-info-details">
                   <h3>Email</h3>
-                  <a href="mailto:fatimazahraboukab9@example.com">
-                    fatimazahraboukab9@example.com
+                  <a href="mailto:fatimazahraboukab9@gmail.com">
+                    fatimazahraboukab9@gmail.com
                   </a>
                 </div>
               </div>
@@ -176,21 +189,12 @@ const ContactSection: React.FC = () => {
               </div>
             )}
 
-            <form 
-              name="contact" 
-              method="POST" 
-              data-netlify="true"
-              onSubmit={handleSubmit} 
-              className="contact-form"
-            >
-              {/* Champ caché pour Netlify */}
-              <input type="hidden" name="form-name" value="contact" />
-
+            <form onSubmit={handleSubmit} className="contact-form">
               {/* Première ligne - Prénom et Nom */}
               <div className="form-row">
                 <div className="form-group">
                   <label htmlFor="firstName" className="form-label">
-                    {t('contact.form.firstName.label')}
+                    Prénom
                   </label>
                   <div className="form-input-wrapper">
                     <User className="form-input-icon" />
@@ -201,7 +205,7 @@ const ContactSection: React.FC = () => {
                       value={formData.firstName}
                       onChange={handleChange}
                       className="form-input"
-                      placeholder={t('contact.form.firstName.placeholder')}
+                      placeholder="Votre prénom"
                       required
                     />
                   </div>
@@ -209,7 +213,7 @@ const ContactSection: React.FC = () => {
 
                 <div className="form-group">
                   <label htmlFor="name" className="form-label">
-                    {t('contact.form.name.label')}
+                    Nom
                   </label>
                   <div className="form-input-wrapper">
                     <User className="form-input-icon" />
@@ -220,7 +224,7 @@ const ContactSection: React.FC = () => {
                       value={formData.name}
                       onChange={handleChange}
                       className="form-input"
-                      placeholder={t('contact.form.name.placeholder')}
+                      placeholder="Votre nom"
                       required
                     />
                   </div>
@@ -230,7 +234,7 @@ const ContactSection: React.FC = () => {
               {/* Email */}
               <div className="form-group">
                 <label htmlFor="email" className="form-label">
-                  {t('contact.form.email.label')}
+                  Email
                 </label>
                 <div className="form-input-wrapper">
                   <Mail className="form-input-icon" />
@@ -241,7 +245,7 @@ const ContactSection: React.FC = () => {
                     value={formData.email}
                     onChange={handleChange}
                     className="form-input"
-                    placeholder={t('contact.form.email.placeholder')}
+                    placeholder="votre.email@example.com"
                     required
                   />
                 </div>
@@ -250,7 +254,7 @@ const ContactSection: React.FC = () => {
               {/* Sujet */}
               <div className="form-group">
                 <label htmlFor="subject" className="form-label">
-                  {t('contact.form.subject.label')}
+                  Sujet
                 </label>
                 <div className="form-input-wrapper">
                   <MessageSquare className="form-input-icon" />
@@ -261,7 +265,7 @@ const ContactSection: React.FC = () => {
                     value={formData.subject}
                     onChange={handleChange}
                     className="form-input"
-                    placeholder={t('contact.form.subject.placeholder')}
+                    placeholder="Sujet de votre message"
                     required
                   />
                 </div>
@@ -270,7 +274,7 @@ const ContactSection: React.FC = () => {
               {/* Message */}
               <div className="form-group">
                 <label htmlFor="message" className="form-label">
-                  {t('contact.form.message.label')}
+                  Message
                 </label>
                 <textarea
                   id="message"
@@ -278,7 +282,7 @@ const ContactSection: React.FC = () => {
                   value={formData.message}
                   onChange={handleChange}
                   className="form-textarea"
-                  placeholder={t('contact.form.message.placeholder')}
+                  placeholder="Écrivez votre message ici..."
                   required
                 />
               </div>
@@ -291,7 +295,7 @@ const ContactSection: React.FC = () => {
               >
                 <Send size={20} />
                 <span>
-                  {isSubmitting ? t('contact.form.sending') : t('contact.form.submit')}
+                  {isSubmitting ? 'Envoi...' : 'Envoyer le message'}
                 </span>
               </button>
             </form>
